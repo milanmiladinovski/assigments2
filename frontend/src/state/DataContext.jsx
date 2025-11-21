@@ -13,7 +13,7 @@ export function DataProvider({ children }) {
     hasPrev: false
   });
   const [searchQuery, setSearchQuery] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const fetchItems = useCallback(async (page = 1, limit = 12, q = '', append = false, signal = null) => {
     setLoading(true);
