@@ -1,3 +1,6 @@
+// Disable SSL certificate validation (development only)
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
@@ -10,7 +13,8 @@ const app = express();
 const PORT = parseInt(process.env.PORT, 10) || 4001;
 
 // Middleware
-app.use(cors({ origin: `http://localhost:${PORT}` }));
+// Allow all origins (CORS disabled - for development only)
+app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 app.use(morgan('dev'));
 
